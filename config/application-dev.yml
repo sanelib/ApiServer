@@ -1,1 +1,9 @@
 name: Developer
+version: 0.1
+releaseDate: 1/1/2005
+---
+server:
+  name: local
+  host:
+    ip: 127.0.0.1
+    port: 3306

@@ -37,7 +37,6 @@ dependencies {
     compile 'org.yaml:snakeyaml:1.15'
     compile'org.springframework.boot:spring-boot-starter'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
-  //  testCompile project ('api.server')
 }
 
 task wrapper(type: Wrapper) {

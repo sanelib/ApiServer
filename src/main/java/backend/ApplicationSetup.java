@@ -21,7 +21,7 @@ public class ApplicationSetup implements CommandLineRunner {
     @Override
     public void run(String... args) {
         System.out.println("Args:" + Arrays.toString(args));
-        System.out.println(profileService.getMessage());
+        System.out.println(profileService.getToString());
     }
 
     public static void main(String[] args) throws Exception {

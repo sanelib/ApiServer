@@ -38,28 +38,28 @@ public class SampleApplicationTests {
     public void testDefaultSettings() throws Exception {
         ApplicationSetup.main(new String[0]);
         String output = this.outputCapture.toString();
-        assertTrue("Wrong output: " + output, output.contains("Hello NA"));
+        assertTrue("Wrong output: " + output, output.contains("{name='Production', serverName='CI', serverHostIP='127.0.0.1', serverHostPort=3306}"));
     }
 
     @Test
     public void testExplicitVariable() throws Exception {
         ApplicationSetup.main(new String[] { "--name=Gordon" });
         String output = this.outputCapture.toString();
-        assertTrue("Wrong output: " + output, output.contains("Hello Gordon"));
+        assertTrue("Wrong output: " + output, output.contains("{name='Gordon', serverName='CI', serverHostIP='127.0.0.1', serverHostPort=3306}"));
     }
 
     @Test
     public void testDevProfile() throws Exception {
-        System.setProperty("spring.profiles.active", "default");
+        System.setProperty("spring.profiles.active", "dev");
         ApplicationSetup.main(new String[0]);
         String output = this.outputCapture.toString();
-        assertTrue("Wrong output: " + output, output.contains("Hello Default"));
+        assertTrue("Wrong output: " + output, output.contains("{name='Developer', serverName='local', serverHostIP='127.0.0.1', serverHostPort=3306}"));
     }
 
     @Test
     public void testProfileCommand() throws Exception {
         ApplicationSetup.main(new String[]{"--spring.profiles.active=dev"});
         String output = this.outputCapture.toString();
-        assertTrue("Wrong output: " + output, output.contains("Hello Developer"));
+        assertTrue("Wrong output: " + output, output.contains("{name='Developer', serverName='local', serverHostIP='127.0.0.1', serverHostPort=3306}"));
     }
 }
