@@ -37,6 +37,16 @@ public class AppProperties {
         this.server = server;
     }
 
+    private String locale;
+
+    public String getLocale(){
+        return this.locale;
+    }
+
+    public void setLocale(String locale) {
+        this.locale = locale;
+    }
+
     public static class Server {
 
         private String name;

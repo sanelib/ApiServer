@@ -1,6 +1,8 @@
 name: Developer
 version: 0.1
 releaseDate: 1/1/2005
+locale: hi_IN
+
 ---
 server:
   name: local

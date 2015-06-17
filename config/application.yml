@@ -1,7 +1,9 @@
 name: Production
 version: 0.1
 releaseDate: 1/1/2005
+locale: en_US
 
+---
 server:
   name: CI
   host:

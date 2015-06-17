@@ -9,6 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 import java.util.Arrays;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 @SpringBootApplication
 @EnableConfigurationProperties(AppProperties.class)
@@ -29,9 +31,14 @@ public class ApplicationSetup implements CommandLineRunner {
         System.out.println("Args:" + Arrays.toString(args));
         System.out.println(profileService.getToString());
         System.out.println(appProperties.toString());
+        System.out.println("Getting locale:" + appProperties.getLocale());
+        Locale.setDefault(new Locale(appProperties.getLocale()));
+
     }
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(ApplicationSetup.class, args);
+
+        System.out.println(ResourceBundle.getBundle("MessagesBundle").getString("hello.text"));
     }
 }
