@@ -38,7 +38,5 @@ public class ApplicationSetup implements CommandLineRunner {
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(ApplicationSetup.class, args);
-
-        System.out.println(ResourceBundle.getBundle("MessagesBundle").getString("hello.text"));
     }
 }
