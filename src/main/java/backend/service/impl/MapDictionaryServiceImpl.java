@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.stereotype.Service;
+import org.yaml.snakeyaml.Yaml;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -38,7 +39,7 @@ public class MapDictionaryServiceImpl implements MapDictionaryService {
             if(resources != null && resources.length != 0){
                 for(Resource resource : resources){
                     if(Objects.equals(messageBundle, "yml")){
-                        System.out.println("TODO:" + resource);
+                        buildResourceFromYaml(resource, keyValuePair);
                     } else if(Objects.equals(messageBundle, "properties")) {
                         buildResourceFromProperties(resource, keyValuePair);
                     }
@@ -63,6 +64,25 @@ public class MapDictionaryServiceImpl implements MapDictionaryService {
         for(Object k : properties.keySet()) {
             String key = prefix + "." + k;
             keyValuePair.put(key, properties.getProperty(String.valueOf(k)));
+        }
+    }
+
+    private void buildResourceFromYaml(Resource resource, Map<String, String> keyValuePair) throws IOException {
+        String prefix = resource.getFilename().substring(0, resource.getFilename().lastIndexOf("."));
+        Yaml yaml = new Yaml();
+        Map<String, Object> map = (Map<String, Object>) yaml.load(new FileInputStream(resource.getFile()));
+        buildDictionary(prefix, keyValuePair, map);
+    }
+
+    private void buildDictionary(String prefix, Map<String, String> keyValuePair, Map<String, Object> map){
+        for(Object k : map.keySet()) {
+            String key = prefix.length() > 0 ? prefix + "." + k.toString() : k.toString();
+            if(map.get(k) instanceof Map){
+                buildDictionary(key, keyValuePair, (Map<String, Object>) map.get(k));
+            }
+            else{
+                keyValuePair.put(key, map.get(k).toString());
+            }
         }
     }
 

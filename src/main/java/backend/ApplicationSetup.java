@@ -38,6 +38,8 @@ public class ApplicationSetup implements CommandLineRunner {
         System.out.println("Getting locale:" + appProperties.getLocale());
         Locale.setDefault(new Locale(appProperties.getLocale()));
         System.out.println(mapDictionaryService.getValue("common.field.required"));
+        System.out.println(mapDictionaryService.getValue("common.field.invalid"));
+
     }
 
     public static void main(String[] args) throws Exception {

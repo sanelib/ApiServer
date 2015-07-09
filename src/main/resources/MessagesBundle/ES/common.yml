@@ -2,4 +2,5 @@ homeUrl: www.sanelib.com
 welcome: Welcome to Sanelib
 
 field:
-  required: This field is required
+  required: This field is required ES-(y)
+  invalid: this filed is invalid ES-(y)
