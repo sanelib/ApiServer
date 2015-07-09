@@ -47,6 +47,16 @@ public class AppProperties {
         this.locale = locale;
     }
 
+    private String messageBundle;
+
+    public String getMessageBundle(){
+        return this.messageBundle;
+    }
+
+    public void setMessageBundle(String messageBundle){
+        this.messageBundle = messageBundle;
+    }
+
     public static class Server {
 
         private String name;

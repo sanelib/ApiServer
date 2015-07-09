@@ -37,7 +37,7 @@ public class ApplicationSetup implements CommandLineRunner {
         System.out.println(appProperties.toString());
         System.out.println("Getting locale:" + appProperties.getLocale());
         Locale.setDefault(new Locale(appProperties.getLocale()));
-        System.out.println(mapDictionaryService.getValue("system.welcome"));
+        System.out.println(mapDictionaryService.getValue("common.field.required"));
     }
 
     public static void main(String[] args) throws Exception {

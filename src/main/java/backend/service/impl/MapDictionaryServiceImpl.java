@@ -10,10 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
@@ -27,10 +24,12 @@ public class MapDictionaryServiceImpl implements MapDictionaryService {
 
     private Map<String, String> buildMapDictionary(String locale){
 
+        String messageBundle = appProperties.getMessageBundle();
+
         System.out.println("Generating MapDictionary.....................");
 
         Map<String, String> keyValuePair = new HashMap<>();
-        String directoryPath = "classpath:MessagesBundle/" + locale + "/*.properties";
+        String directoryPath = "classpath:MessagesBundle/" + locale + "/*." + messageBundle;
 
         PathMatchingResourcePatternResolver resourceResolver = new PathMatchingResourcePatternResolver();
 
@@ -38,13 +37,10 @@ public class MapDictionaryServiceImpl implements MapDictionaryService {
             Resource[] resources = resourceResolver.getResources(directoryPath);
             if(resources != null && resources.length != 0){
                 for(Resource resource : resources){
-                    Properties props = new Properties();
-                    props.load(new FileInputStream(resource.getFile()));
-                    Enumeration keySet = props.keys();
-                    while(keySet.hasMoreElements()){
-                        String key = (String) keySet.nextElement();
-                        String value = props.getProperty(key);
-                        keyValuePair.put(key, value);
+                    if(Objects.equals(messageBundle, "yml")){
+                        System.out.println("TODO:" + resource);
+                    } else if(Objects.equals(messageBundle, "properties")) {
+                        buildResourceFromProperties(resource, keyValuePair);
                     }
                 }
             }
@@ -58,6 +54,16 @@ public class MapDictionaryServiceImpl implements MapDictionaryService {
         System.out.println("Finished Generating MapDictionary...............");
 
         return keyValuePair;
+    }
+
+    private void buildResourceFromProperties(Resource resource, Map<String, String> keyValuePair) throws IOException {
+        Properties properties = new Properties();
+        String prefix = resource.getFilename().substring(0, resource.getFilename().lastIndexOf("."));
+        properties.load(new FileInputStream(resource.getFile()));
+        for(Object k : properties.keySet()) {
+            String key = prefix + "." + k;
+            keyValuePair.put(key, properties.getProperty(String.valueOf(k)));
+        }
     }
 
     @Override
