@@ -11,7 +11,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 import java.util.Arrays;
 import java.util.Locale;
-import java.util.ResourceBundle;
 
 @SpringBootApplication
 @EnableConfigurationProperties(AppProperties.class)
@@ -22,24 +21,34 @@ public class ApplicationSetup implements CommandLineRunner {
     // command line args ('--name=whatever') or application properties
 
     @Autowired
-    private ProfileService profileService;
-
-    @Autowired
     private AppProperties appProperties;
 
     @Autowired
     private MapDictionaryService mapDictionaryService;
 
+    @Autowired
+    private ProfileService profileService;
+
     @Override
     public void run(String... args) {
-        System.out.println("Args:" + Arrays.toString(args));
-        System.out.println(profileService.getToString());
-        System.out.println(appProperties.toString());
-        System.out.println("Getting locale:" + appProperties.getLocale());
         Locale.setDefault(new Locale(appProperties.getLocale()));
-        System.out.println(mapDictionaryService.getValue("common.field.required"));
-        System.out.println(mapDictionaryService.getValue("common.field.invalid"));
+        System.out.println("Args:" + Arrays.toString(args));
 
+        System.out.println("=============Config==============");
+
+        System.out.println("name: " + appProperties.getName());
+        System.out.println("version: " + appProperties.getVersion());
+        System.out.println("releaseDate: " + appProperties.getReleaseDate());
+        System.out.println("locale: " + appProperties.getLocale());
+        System.out.println("messageBundle: " + appProperties.getMessageBundle());
+
+        System.out.println("==============Database============");
+
+        System.out.println("Database: " + appProperties.getServer().getName());
+        System.out.println("Host: " + appProperties.getServer().getHost().getIp() + ":" + appProperties.getServer().getHost().getPort());
+
+        //Another way to read profile. Only for learning purpose
+        System.out.println(profileService.toString());
     }
 
     public static void main(String[] args) throws Exception {

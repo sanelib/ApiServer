@@ -37,15 +37,16 @@ public class SampleApplicationTests {
     @Test
     public void testDefaultSettings() throws Exception {
         ApplicationSetup.main(new String[0]);
+
         String output = this.outputCapture.toString();
-        assertTrue("Wrong output: " + output, output.contains("{name='Production', serverName='CI', serverHostIP='127.0.0.1', serverHostPort=3306}"));
+        assertTrue("Wrong output: " + output, output.contains("{name='Production', version='0.1', releaseDate='1/1/2005', locale='EN', messageBundle='yml', serverName='CI', serverHostIP='127.0.0.1', serverHostPort=3306}"));
     }
 
     @Test
     public void testExplicitVariable() throws Exception {
         ApplicationSetup.main(new String[] { "--name=Gordon" });
         String output = this.outputCapture.toString();
-        assertTrue("Wrong output: " + output, output.contains("{name='Gordon', serverName='CI', serverHostIP='127.0.0.1', serverHostPort=3306}"));
+        assertTrue("Wrong output: " + output, output.contains("{name='Gordon', version='0.1', releaseDate='1/1/2005', locale='EN', messageBundle='yml', serverName='CI', serverHostIP='127.0.0.1', serverHostPort=3306}"));
     }
 
     @Test
@@ -53,13 +54,13 @@ public class SampleApplicationTests {
         System.setProperty("spring.profiles.active", "dev");
         ApplicationSetup.main(new String[0]);
         String output = this.outputCapture.toString();
-        assertTrue("Wrong output: " + output, output.contains("{name='Developer', serverName='local', serverHostIP='127.0.0.1', serverHostPort=3306}"));
+        assertTrue("Wrong output: " + output, output.contains("{name='Developer', version='0.1', releaseDate='1/1/2005', locale='ES', messageBundle='properties', serverName='local', serverHostIP='127.0.0.1', serverHostPort=3306}"));
     }
 
     @Test
     public void testProfileCommand() throws Exception {
         ApplicationSetup.main(new String[]{"--spring.profiles.active=dev"});
         String output = this.outputCapture.toString();
-        assertTrue("Wrong output: " + output, output.contains("{name='Developer', serverName='local', serverHostIP='127.0.0.1', serverHostPort=3306}"));
+        assertTrue("Wrong output: " + output, output.contains("{name='Developer', version='0.1', releaseDate='1/1/2005', locale='ES', messageBundle='properties', serverName='local', serverHostIP='127.0.0.1', serverHostPort=3306}"));
     }
 }
