@@ -67,6 +67,7 @@ public class MapDictionaryServiceImpl implements MapDictionaryService {
         }
     }
 
+    @SuppressWarnings("unchecked")
     private void buildResourceFromYaml(Resource resource, Map<String, String> keyValuePair) throws IOException {
         String prefix = resource.getFilename().substring(0, resource.getFilename().lastIndexOf("."));
         Yaml yaml = new Yaml();
@@ -74,6 +75,7 @@ public class MapDictionaryServiceImpl implements MapDictionaryService {
         buildDictionary(prefix, keyValuePair, map);
     }
 
+    @SuppressWarnings("unchecked")
     private void buildDictionary(String prefix, Map<String, String> keyValuePair, Map<String, Object> map){
         for(Object k : map.keySet()) {
             String key = prefix.length() > 0 ? prefix + "." + k.toString() : k.toString();
