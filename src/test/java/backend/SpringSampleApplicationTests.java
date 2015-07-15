@@ -26,7 +26,6 @@ public class SpringSampleApplicationTests {
     @Test
     public void testContextLoads() throws Exception {
         assertNotNull(this.ctx);
-        assertTrue(this.ctx.containsBean("profileServiceImpl"));
         assertTrue(this.ctx.containsBean("applicationSetup"));
     }
 

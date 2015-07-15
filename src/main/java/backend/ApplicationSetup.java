@@ -2,7 +2,6 @@ package backend;
 
 import backend.service.AppProperties;
 import backend.service.MapDictionaryService;
-import backend.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -26,9 +25,6 @@ public class ApplicationSetup implements CommandLineRunner {
     @Autowired
     private MapDictionaryService mapDictionaryService;
 
-    @Autowired
-    private ProfileService profileService;
-
     @Override
     public void run(String... args) {
         Locale.setDefault(new Locale(appProperties.getLocale()));
@@ -47,8 +43,6 @@ public class ApplicationSetup implements CommandLineRunner {
         System.out.println("Database: " + appProperties.getServer().getName());
         System.out.println("Host: " + appProperties.getServer().getHost().getIp() + ":" + appProperties.getServer().getHost().getPort());
 
-        //Another way to read profile. Only for learning purpose
-        System.out.println(profileService.toString());
     }
 
     public static void main(String[] args) throws Exception {
