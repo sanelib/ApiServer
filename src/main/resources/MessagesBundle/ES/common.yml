@@ -1,6 +1,6 @@
 homeUrl: www.sanelib.com
-welcome: Welcome to Sanelib
+welcome: Bienvenido a sanelib
 
 field:
-  required: This field is required ES-(y)
-  invalid: this filed is invalid ES-(y)
+  required: Este campo es requerido-(y)
+  invalid: Este campo no es válido-(y)
