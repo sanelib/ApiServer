@@ -4,39 +4,39 @@ import backend.dto.Address;
 import org.junit.Test;
 
 /**
- * Date: 16/07/2015
- * Test case for addressFormatter.
+ * Date:17th July 2015
+ * Test case for addressValidator.
  */
 
-public class AddressFormatterTest {
+public class AddressValidatorTest extends ContextProviderTest {
     Address address = new Address();
 
     /**
-     * Setting values of Line1 and Line2 for testcase.
+     * Setting values of Line1,Line2 and Area for testcase.
      * @throws Exception
      */
     @Test
-    public void addressShouldHaveValidLineInfo() throws Exception{
+    public void addressShouldContainValidPlaceInfo() throws Exception{
 
         address.setLine1("Line1");
         address.setLine2("Line2");
+        address.setArea("Gota");
     }
 
     /**
-     * Setting values of Area,City,State and country for testcase.
+     * Setting values of City,State and Country for testcase.
      * @throws Exception
      */
     @Test
     public void addressShouldContainValidLocation() throws Exception{
 
-        address.setArea("Gota");
         address.setCity("Ahmedabad");
         address.setState("Gujarat");
         address.setCountry("India");
     }
 
     /**
-     * Setting value of zipCode for testcase.
+     * Setting value for zipCode for testcase.
      * @throws Exception
      */
     @Test
