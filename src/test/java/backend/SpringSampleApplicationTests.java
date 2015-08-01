@@ -1,8 +1,7 @@
 package backend;
 
-import backend.domain.Address;
-import backend.domain.Person;
-import backend.domain.service.Validator;
+import backend.dto.Person;
+import backend.dto.validator.Validator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,12 +36,17 @@ public class SpringSampleApplicationTests {
     }
 
     @Test
-    public void test() throws Exception {
+    public void testPersonValidator() throws Exception {
 
         System.out.println(Arrays.toString(ctx.getBeanDefinitionNames()));
 
-        checkValidation(new Person());
-        checkValidation(new Address());
+        Person person = new Person();
+        person.setFirstName("fname");
+        person.setMiddleName("mname");
+        person.setLastName("lname");
+        person.setSex("M");
+        person.setDateOfBirth("01/01/2000");
+        checkValidation(person);
     }
 
     private boolean checkValidation(Object obj){
