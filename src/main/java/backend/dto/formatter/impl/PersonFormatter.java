@@ -1,7 +1,6 @@
 package backend.dto.formatter.impl;
 
 import backend.dto.Person;
-import backend.dto.formatter.Formatter;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
@@ -12,7 +11,7 @@ import java.util.Objects;
 */
 
 @Component
-public class PersonFormatter implements Formatter<Person> {
+public class PersonFormatter extends Formatter<Person> {
 
     /**
      *

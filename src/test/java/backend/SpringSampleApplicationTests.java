@@ -17,13 +17,11 @@ import static org.junit.Assert.assertTrue;
 /**
  * Tests for {@link ApplicationSetup}.
  *
- * @author Dave Syer
+ * @author Z21
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-//@ActiveProfiles(value = "test")
 @SpringApplicationConfiguration(classes = ApplicationSetup.class)
 public class SpringSampleApplicationTests {
-
 
     @Autowired
     ApplicationContext ctx;
@@ -38,7 +36,7 @@ public class SpringSampleApplicationTests {
     @Test
     public void testPersonValidator() throws Exception {
 
-        System.out.println(Arrays.toString(ctx.getBeanDefinitionNames()));
+        System.out.println("Here: " + Arrays.toString(ctx.getBeanDefinitionNames()));
 
         Person person = new Person();
         person.setFirstName("fname");
