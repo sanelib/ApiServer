@@ -1,6 +1,11 @@
-package backend.domain;
+package backend.commands.Address;
 
-public class Address {
+import backend.commands.ICommand;
+
+/**
+ * Created by zaidikkis on 01-Aug-15.
+ */
+public class AddAddress implements ICommand {
 
     private String line1;
     private String line2;
@@ -64,18 +69,5 @@ public class Address {
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
-    }
-
-    @Override
-    public String toString() {
-        return "Address{" +
-                "line1='" + line1 + '\'' +
-                ", line2='" + line2 + '\'' +
-                ", Area='" + Area + '\'' +
-                ", City='" + City + '\'' +
-                ", State='" + State + '\'' +
-                ", Country='" + Country + '\'' +
-                ", zipCode='" + zipCode + '\'' +
-                '}';
     }
 }

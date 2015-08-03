@@ -16,7 +16,7 @@ apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: "spring-boot"
 
-sourceCompatibility = 1.8
+sourceCompatibility = 1.7
 
 run {
     systemProperties = System.properties
@@ -35,7 +35,8 @@ repositories {
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.3'
     compile 'org.yaml:snakeyaml:1.15'
-    compile'org.springframework.boot:spring-boot-starter'
+    compile 'org.springframework.boot:spring-boot-starter'
+    compile 'org.modelmapper:modelmapper:0.7.4'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
 
