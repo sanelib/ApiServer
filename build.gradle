@@ -37,6 +37,8 @@ dependencies {
     compile 'org.yaml:snakeyaml:1.15'
     compile 'org.springframework.boot:spring-boot-starter'
     compile 'org.modelmapper:modelmapper:0.7.4'
+    compile 'org.springframework:spring-web:4.2.0.RELEASE'
+
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
 

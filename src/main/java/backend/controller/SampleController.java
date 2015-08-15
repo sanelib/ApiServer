@@ -1,7 +1,8 @@
 package backend.controller;
 
-import backend.commands.Address.AddAddress;
+import backend.commands.address.AddAddress;
 import backend.dto.Address;
+import backend.dto.formatter.impl.AddressFormatter;
 import backend.dto.formatter.impl.Formatter;
 import backend.init.Mapper;
 import org.modelmapper.ModelMapper;
@@ -9,16 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
-/**
- * Created by zaidikkis on 01-Aug-15.
- */
-
 @Controller
 public class SampleController {
 
     @Autowired
-    @Qualifier(value = "AddressFormatter")
-    private Formatter<Address> addressFormatter;
+    private AddressFormatter addressFormatter;
 
     public boolean mapping(Address dto){
         boolean isValidFormat = addressFormatter.apply(dto);
@@ -28,7 +24,7 @@ public class SampleController {
         ModelMapper mapper = Mapper.getInstance();
         AddAddress command = mapper.map(dto, AddAddress.class);
 
-        System.out.println("Address{" +
+        System.out.println("address{" +
                 "line1='" + command.getLine1() + '\'' +
                 ", line2='" + command.getLine2() + '\'' +
                 ", Area='" + command.getArea() + '\'' +

@@ -1,4 +1,4 @@
-package backend.commands.Address;
+package backend.commands.address;
 
 import backend.commands.ICommand;
 
@@ -7,13 +7,22 @@ import backend.commands.ICommand;
  */
 public class AddAddress implements ICommand {
 
+    private Long id;
     private String line1;
     private String line2;
-    private String Area;
-    private String City;
-    private String State;
-    private String Country;
+    private String area;
+    private String city;
+    private String state;
+    private String country;
     private String zipCode;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getLine1() {
         return line1;
@@ -32,35 +41,35 @@ public class AddAddress implements ICommand {
     }
 
     public String getArea() {
-        return Area;
+        return area;
     }
 
     public void setArea(String area) {
-        Area = area;
+        this.area = area;
     }
 
     public String getCity() {
-        return City;
+        return city;
     }
 
     public void setCity(String city) {
-        City = city;
+        this.city = city;
     }
 
     public String getState() {
-        return State;
+        return state;
     }
 
     public void setState(String state) {
-        State = state;
+        this.state = state;
     }
 
     public String getCountry() {
-        return Country;
+        return country;
     }
 
     public void setCountry(String country) {
-        Country = country;
+        this.country = country;
     }
 
     public String getZipCode() {

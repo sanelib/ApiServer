@@ -2,16 +2,16 @@ package backend.dto;
 
 /**
  * Date:16th July 2015
- * Gives Address data which includes Line1,Line2,Area,City,State and Country.
+ * Gives address data which includes Line1,Line2,Area,City,State and Country.
  */
 
 public class Address {
     private String line1;
     private String line2;
-    private String Area;
-    private String City;
-    private String State;
-    private String Country;
+    private String area;
+    private String city;
+    private String state;
+    private String country;
     private String zipCode;
 
     public String getLine1() {
@@ -31,35 +31,35 @@ public class Address {
     }
 
     public String getArea() {
-        return Area;
+        return area;
     }
 
     public void setArea(String area) {
-        Area = area;
+        this.area = area;
     }
 
     public String getCity() {
-        return City;
+        return city;
     }
 
     public void setCity(String city) {
-        City = city;
+        this.city = city;
     }
 
     public String getState() {
-        return State;
+        return state;
     }
 
     public void setState(String state) {
-        State = state;
+        this.state = state;
     }
 
     public String getCountry() {
-        return Country;
+        return country;
     }
 
     public void setCountry(String country) {
-        Country = country;
+        this.country = country;
     }
 
     public String getZipCode() {
@@ -72,14 +72,14 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address{" +
-                "line1='" + line1 + '\'' +
-                ", line2='" + line2 + '\'' +
-                ", Area='" + Area + '\'' +
-                ", City='" + City + '\'' +
-                ", State='" + State + '\'' +
-                ", Country='" + Country + '\'' +
-                ", zipCode='" + zipCode + '\'' +
+        return "address{" +
+                "line1='" + this.line1 + '\'' +
+                ", line2='" + this.line2 + '\'' +
+                ", Area='" + this.area + '\'' +
+                ", City='" + this.city + '\'' +
+                ", State='" + this.state + '\'' +
+                ", Country='" + this.country + '\'' +
+                ", zipCode='" + this.zipCode + '\'' +
                 '}';
     }
 }

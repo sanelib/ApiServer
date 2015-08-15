@@ -1,9 +1,12 @@
 package backend.dto.formatter.impl;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Created by Z21 on 01-Aug-15.
  */
 
+@Component
 public abstract class Formatter<T> {
 
     public abstract boolean apply(T obj);
